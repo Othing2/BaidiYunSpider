@@ -5,10 +5,10 @@ from flask.ext.script import Manager, prompt_bool,Server
 from flask.ext.debugtoolbar import DebugToolbarExtension
 from flask import render_template, g
 
-from SearchWeb.rawFlask.mountpoint import MOUNT_POINTS
-from SearchWeb.rawFlask.settings import create_app, configure_blueprints
-from SearchWeb.rawFlask import config
-from SearchWeb.rawFlask.ext import db
+from Web.rawFlask.mountpoint import MOUNT_POINTS
+from Web.rawFlask.settings import create_app, configure_blueprints
+from Web.rawFlask import config
+from Web.rawFlask.ext import db
 
 __author__ = 'hany'
 

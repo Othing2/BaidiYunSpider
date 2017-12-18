@@ -15,15 +15,9 @@ import collections
 
 import requests
 from pymongo import MongoClient
-from .config import URLs
+from .config import *
 
-db_conn = MongoClient()
-db_base = db_conn.bdpan           #数据库
-table_shares = db_base.shares     #分享数据表单
-table_follows = db_base.follows   #订阅表单
-table_fans = db_base.fans         #粉丝表单
-table_seen_uid = db_base.seen_uids
-table_unseen_uid = db_base.unseen_uids
+
 
 
 class LoadingError(Exception):

@@ -12,9 +12,9 @@ class Config(object):
     BABEL_DEFAULT_LOCALE = 'zh_CN'
     ACCEPT_LANGUAGES = ['en', 'zh']
 
-    APPLICATION_ROOT = "/SearchWeb"  # change to user own root
+    APPLICATION_ROOT = "/Web"  # change to user own root
 
-    STATIC_URL_PATH = "/SearchWeb/static"  # change to user own static path
+    STATIC_URL_PATH = "/Web/static"  # change to user own static path
     STATIC_FOLDER = "static"
 
     LOG_PATH = './logs'
