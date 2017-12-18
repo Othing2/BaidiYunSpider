@@ -1,0 +1,17 @@
+{	'errno': 0, 
+	'user_info': 
+		{	'follow_count': 1, 
+			'pair_follow_type': -1, 
+			'album_count': 0, 
+			'uname': '荡铺DP', 
+			'c2c_user_product_count': 0, 
+			'c2c_user_buy_count': 0, 
+			'c2c_user_sell_count': 0, 
+			'uk': 697008088, 
+			'intro': '免费分享微信公众号：dppapapa', 
+			'pubshare_count': 37, 
+			'tui_user_count': 0, 
+			'avatar_url': 'http://himg.bdimg.com/sys/portrait/item/3129078f.jpg',
+			'fans_count': 8839
+		}, 
+	'request_id': 1093381225}

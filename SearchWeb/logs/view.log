@@ -1,0 +1,505 @@
+2017-01-23 14:12:58,005 INFO 45245 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: logout_raw, cost:0.001153 s
+2017-01-23 14:14:17,118 INFO 45245 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: logout_raw, cost:0.00018 s
+2017-01-23 14:14:36,006 INFO 45245 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: logout_raw, cost:0.000132 s
+2017-01-23 14:14:39,536 INFO 45245 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: logout_raw, cost:0.000136 s
+2017-01-23 14:15:04,734 INFO 45245 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: login_sso, cost:1.2139 s
+2017-01-23 14:16:24,717 INFO 45245 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: logout_raw, cost:0.000134 s
+2017-01-23 14:16:54,374 INFO 45245 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: login_sso, cost:0.108942 s
+2017-01-23 14:18:20,182 INFO 45245 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: logout_raw, cost:0.000237 s
+2017-01-23 14:18:54,252 INFO 45245 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: logout_raw, cost:0.000178 s
+2017-01-23 14:19:44,528 INFO 45245 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: logout_raw, cost:0.000123 s
+2017-01-23 14:20:44,035 INFO 45245 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: login_sso, cost:0.204576 s
+2017-01-23 14:21:57,021 INFO 45758 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: login_sso, cost:2.964517 s
+2017-01-23 14:21:58,073 INFO 45758 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: login_status_check, cost:0.012097 s
+2017-01-23 14:23:23,013 INFO 45758 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: login_status_check, cost:0.011885 s
+2017-01-23 14:26:54,300 INFO 45758 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: login_status_check, cost:0.01099 s
+2017-01-23 14:27:13,860 INFO 45758 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: login_status_check, cost:0.011394 s
+2017-01-23 14:27:27,644 INFO 45758 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: login_status_check, cost:0.010976 s
+2017-01-23 14:31:12,151 INFO 45758 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: login_status_check, cost:0.01423 s
+2017-01-23 14:32:12,083 INFO 45901 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: login_status_check, cost:0.350977 s
+2017-01-23 14:33:17,314 INFO 45901 /wls/applications/rawFlask/rawFlask/utils.py 49 - func: login_status_check, cost:0.014516 s
+2017-04-22 14:27:43,242 WARNING 10744 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 57 - func: report_default, cost:0.134263 s, error:Traceback (most recent call last):
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 876, in __call__
+    return self.registry[key]
+KeyError: 11936
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py", line 46, in record_exception
+    back = func(*args, **kwargs)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\views\index.py", line 26, in report_default
+    return jsonify(resCode=200, data=UserApp.user_operation_report(beg, end, time_span, opr_type), mess='ok')
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 98, in user_operation_report
+    ret_list = cls.user_operation_query(beg_int_t * 1000, end_int_t * 1000)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 73, in user_operation_query
+    for item in db.session.query(UserOperation).filter(UserOperation.opr_time.between(beg_time, end_time)).all():
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\orm\scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 878, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 704, in create_session
+    return SignallingSession(self, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 157, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 816, in engine
+    return self.get_engine(self.get_app())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 833, in get_engine
+    return connector.get_engine()
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 499, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\__init__.py", line 362, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\strategies.py", line 74, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\connectors\mysqldb.py", line 64, in dbapi
+    return __import__('MySQLdb')
+ImportError: No module named 'MySQLdb'
+
+No module named 'MySQLdb'
+2017-04-22 14:28:17,419 INFO 10744 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 49 - func: logout_raw, cost:0.0 s
+2017-04-22 14:49:26,012 INFO 6216 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 49 - func: login_status_check, cost:0.0 s
+2017-04-22 14:52:03,984 INFO 6216 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 49 - func: logout_raw, cost:0.0 s
+2017-04-22 14:52:52,452 INFO 6216 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 49 - func: logout_raw, cost:0.0 s
+2017-04-22 14:52:57,693 INFO 6216 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 49 - func: login_status_check, cost:0.0 s
+2017-04-22 14:53:11,618 INFO 10168 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 49 - func: login_status_check, cost:0.001 s
+2017-04-22 14:53:56,476 INFO 10016 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 49 - func: login_status_check, cost:0.0 s
+2017-04-22 14:54:57,102 INFO 11332 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 49 - func: login_status_check, cost:0.0 s
+2017-04-22 14:55:37,159 INFO 11332 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 49 - func: login_status_check, cost:0.0 s
+2017-04-22 14:57:24,013 INFO 10768 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 49 - func: login_status_check, cost:0.0 s
+2017-04-22 14:58:04,071 INFO 9832 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 49 - func: logout_raw, cost:0.001001 s
+2017-04-22 14:58:30,131 INFO 9832 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 49 - func: logout_raw, cost:0.0 s
+2017-04-22 14:59:22,111 INFO 9832 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 49 - func: login_status_check, cost:0.0 s
+2017-04-22 15:35:08,903 INFO 7260 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 49 - func: login_status_check, cost:0.001 s
+2017-04-22 16:09:49,720 INFO 9340 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 49 - func: login_status_check, cost:0.0 s
+2017-04-23 00:13:22,036 WARNING 11408 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 57 - func: report_default, cost:0.026018 s, error:Traceback (most recent call last):
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 876, in __call__
+    return self.registry[key]
+KeyError: 9772
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py", line 46, in record_exception
+    back = func(*args, **kwargs)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\views\index.py", line 26, in report_default
+    return jsonify(resCode=200, data=UserApp.user_operation_report(beg, end, time_span, opr_type), mess='ok')
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 98, in user_operation_report
+    ret_list = cls.user_operation_query(beg_int_t * 1000, end_int_t * 1000)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 73, in user_operation_query
+    for item in db.session.query(UserOperation).filter(UserOperation.opr_time.between(beg_time, end_time)).all():
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\orm\scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 878, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 704, in create_session
+    return SignallingSession(self, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 157, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 816, in engine
+    return self.get_engine(self.get_app())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 833, in get_engine
+    return connector.get_engine()
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 499, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\__init__.py", line 362, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\strategies.py", line 74, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\connectors\mysqldb.py", line 64, in dbapi
+    return __import__('MySQLdb')
+ImportError: No module named 'MySQLdb'
+
+No module named 'MySQLdb'
+2017-04-23 00:13:59,111 WARNING 11408 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 57 - func: report_default, cost:0.003001 s, error:Traceback (most recent call last):
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 876, in __call__
+    return self.registry[key]
+KeyError: 9772
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py", line 46, in record_exception
+    back = func(*args, **kwargs)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\views\index.py", line 26, in report_default
+    return jsonify(resCode=200, data=UserApp.user_operation_report(beg, end, time_span, opr_type), mess='ok')
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 98, in user_operation_report
+    ret_list = cls.user_operation_query(beg_int_t * 1000, end_int_t * 1000)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 73, in user_operation_query
+    for item in db.session.query(UserOperation).filter(UserOperation.opr_time.between(beg_time, end_time)).all():
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\orm\scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 878, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 704, in create_session
+    return SignallingSession(self, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 157, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 816, in engine
+    return self.get_engine(self.get_app())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 833, in get_engine
+    return connector.get_engine()
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 499, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\__init__.py", line 362, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\strategies.py", line 74, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\connectors\mysqldb.py", line 64, in dbapi
+    return __import__('MySQLdb')
+ImportError: No module named 'MySQLdb'
+
+No module named 'MySQLdb'
+2017-04-23 00:14:06,836 WARNING 11408 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 57 - func: report_default, cost:0.002 s, error:Traceback (most recent call last):
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 876, in __call__
+    return self.registry[key]
+KeyError: 9772
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py", line 46, in record_exception
+    back = func(*args, **kwargs)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\views\index.py", line 26, in report_default
+    return jsonify(resCode=200, data=UserApp.user_operation_report(beg, end, time_span, opr_type), mess='ok')
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 98, in user_operation_report
+    ret_list = cls.user_operation_query(beg_int_t * 1000, end_int_t * 1000)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 73, in user_operation_query
+    for item in db.session.query(UserOperation).filter(UserOperation.opr_time.between(beg_time, end_time)).all():
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\orm\scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 878, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 704, in create_session
+    return SignallingSession(self, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 157, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 816, in engine
+    return self.get_engine(self.get_app())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 833, in get_engine
+    return connector.get_engine()
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 499, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\__init__.py", line 362, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\strategies.py", line 74, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\connectors\mysqldb.py", line 64, in dbapi
+    return __import__('MySQLdb')
+ImportError: No module named 'MySQLdb'
+
+No module named 'MySQLdb'
+2017-04-23 00:27:57,824 WARNING 11408 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 57 - func: report_default, cost:0.002001 s, error:Traceback (most recent call last):
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 876, in __call__
+    return self.registry[key]
+KeyError: 9772
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py", line 46, in record_exception
+    back = func(*args, **kwargs)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\views\index.py", line 26, in report_default
+    return jsonify(resCode=200, data=UserApp.user_operation_report(beg, end, time_span, opr_type), mess='ok')
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 98, in user_operation_report
+    ret_list = cls.user_operation_query(beg_int_t * 1000, end_int_t * 1000)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 73, in user_operation_query
+    for item in db.session.query(UserOperation).filter(UserOperation.opr_time.between(beg_time, end_time)).all():
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\orm\scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 878, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 704, in create_session
+    return SignallingSession(self, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 157, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 816, in engine
+    return self.get_engine(self.get_app())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 833, in get_engine
+    return connector.get_engine()
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 499, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\__init__.py", line 362, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\strategies.py", line 74, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\connectors\mysqldb.py", line 64, in dbapi
+    return __import__('MySQLdb')
+ImportError: No module named 'MySQLdb'
+
+No module named 'MySQLdb'
+2017-04-23 00:36:56,785 WARNING 11408 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 57 - func: report_default, cost:0.002007 s, error:Traceback (most recent call last):
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 876, in __call__
+    return self.registry[key]
+KeyError: 9772
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py", line 46, in record_exception
+    back = func(*args, **kwargs)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\views\index.py", line 26, in report_default
+    return jsonify(resCode=200, data=UserApp.user_operation_report(beg, end, time_span, opr_type), mess='ok')
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 98, in user_operation_report
+    ret_list = cls.user_operation_query(beg_int_t * 1000, end_int_t * 1000)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 73, in user_operation_query
+    for item in db.session.query(UserOperation).filter(UserOperation.opr_time.between(beg_time, end_time)).all():
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\orm\scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 878, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 704, in create_session
+    return SignallingSession(self, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 157, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 816, in engine
+    return self.get_engine(self.get_app())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 833, in get_engine
+    return connector.get_engine()
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 499, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\__init__.py", line 362, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\strategies.py", line 74, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\connectors\mysqldb.py", line 64, in dbapi
+    return __import__('MySQLdb')
+ImportError: No module named 'MySQLdb'
+
+No module named 'MySQLdb'
+2017-04-23 00:37:10,070 WARNING 11408 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 57 - func: report_default, cost:0.002006 s, error:Traceback (most recent call last):
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 876, in __call__
+    return self.registry[key]
+KeyError: 9772
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py", line 46, in record_exception
+    back = func(*args, **kwargs)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\views\index.py", line 26, in report_default
+    return jsonify(resCode=200, data=UserApp.user_operation_report(beg, end, time_span, opr_type), mess='ok')
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 98, in user_operation_report
+    ret_list = cls.user_operation_query(beg_int_t * 1000, end_int_t * 1000)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 73, in user_operation_query
+    for item in db.session.query(UserOperation).filter(UserOperation.opr_time.between(beg_time, end_time)).all():
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\orm\scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 878, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 704, in create_session
+    return SignallingSession(self, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 157, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 816, in engine
+    return self.get_engine(self.get_app())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 833, in get_engine
+    return connector.get_engine()
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 499, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\__init__.py", line 362, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\strategies.py", line 74, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\connectors\mysqldb.py", line 64, in dbapi
+    return __import__('MySQLdb')
+ImportError: No module named 'MySQLdb'
+
+No module named 'MySQLdb'
+2017-04-23 02:20:33,808 WARNING 8896 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 57 - func: report_default, cost:0.022028 s, error:Traceback (most recent call last):
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 876, in __call__
+    return self.registry[key]
+KeyError: 9156
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py", line 46, in record_exception
+    back = func(*args, **kwargs)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\views\index.py", line 28, in report_default
+    return jsonify(resCode=200, data=UserApp.user_operation_report(beg, end, time_span, opr_type), mess='ok')
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 98, in user_operation_report
+    ret_list = cls.user_operation_query(beg_int_t * 1000, end_int_t * 1000)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 73, in user_operation_query
+    for item in db.session.query(UserOperation).filter(UserOperation.opr_time.between(beg_time, end_time)).all():
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\orm\scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 878, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 704, in create_session
+    return SignallingSession(self, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 157, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 816, in engine
+    return self.get_engine(self.get_app())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 833, in get_engine
+    return connector.get_engine()
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 499, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\__init__.py", line 362, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\strategies.py", line 74, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\connectors\mysqldb.py", line 64, in dbapi
+    return __import__('MySQLdb')
+ImportError: No module named 'MySQLdb'
+
+No module named 'MySQLdb'
+2017-04-23 02:29:45,826 WARNING 9940 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 57 - func: report_default, cost:0.024016 s, error:Traceback (most recent call last):
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 876, in __call__
+    return self.registry[key]
+KeyError: 8512
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py", line 46, in record_exception
+    back = func(*args, **kwargs)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\views\index.py", line 27, in report_default
+    return jsonify(resCode=200, data=UserApp.user_operation_report(beg, end, time_span, opr_type), mess='ok')
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 98, in user_operation_report
+    ret_list = cls.user_operation_query(beg_int_t * 1000, end_int_t * 1000)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 73, in user_operation_query
+    for item in db.session.query(UserOperation).filter(UserOperation.opr_time.between(beg_time, end_time)).all():
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\orm\scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 878, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 704, in create_session
+    return SignallingSession(self, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 157, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 816, in engine
+    return self.get_engine(self.get_app())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 833, in get_engine
+    return connector.get_engine()
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 499, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\__init__.py", line 362, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\strategies.py", line 74, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\connectors\mysqldb.py", line 64, in dbapi
+    return __import__('MySQLdb')
+ImportError: No module named 'MySQLdb'
+
+No module named 'MySQLdb'
+2017-04-23 02:29:52,106 INFO 9940 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 49 - func: logout_raw, cost:0.001001 s
+2017-04-23 02:37:24,247 INFO 9940 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 49 - func: logout_raw, cost:0.0 s
+2017-04-23 02:39:31,552 WARNING 9940 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 57 - func: report_default, cost:0.002001 s, error:Traceback (most recent call last):
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 876, in __call__
+    return self.registry[key]
+KeyError: 8512
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py", line 46, in record_exception
+    back = func(*args, **kwargs)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\views\index.py", line 27, in report_default
+    return jsonify(resCode=200, data=UserApp.user_operation_report(beg, end, time_span, opr_type), mess='ok')
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 98, in user_operation_report
+    ret_list = cls.user_operation_query(beg_int_t * 1000, end_int_t * 1000)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 73, in user_operation_query
+    for item in db.session.query(UserOperation).filter(UserOperation.opr_time.between(beg_time, end_time)).all():
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\orm\scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 878, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 704, in create_session
+    return SignallingSession(self, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 157, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 816, in engine
+    return self.get_engine(self.get_app())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 833, in get_engine
+    return connector.get_engine()
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 499, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\__init__.py", line 362, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\strategies.py", line 74, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\connectors\mysqldb.py", line 64, in dbapi
+    return __import__('MySQLdb')
+ImportError: No module named 'MySQLdb'
+
+No module named 'MySQLdb'
+2017-04-23 15:00:22,239 WARNING 10340 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 57 - func: report_default, cost:0.202487 s, error:Traceback (most recent call last):
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 876, in __call__
+    return self.registry[key]
+KeyError: 10856
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py", line 46, in record_exception
+    back = func(*args, **kwargs)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\views\index.py", line 27, in report_default
+    return jsonify(resCode=200, data=UserApp.user_operation_report(beg, end, time_span, opr_type), mess='ok')
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 98, in user_operation_report
+    ret_list = cls.user_operation_query(beg_int_t * 1000, end_int_t * 1000)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 73, in user_operation_query
+    for item in db.session.query(UserOperation).filter(UserOperation.opr_time.between(beg_time, end_time)).all():
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\orm\scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 878, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 704, in create_session
+    return SignallingSession(self, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 157, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 816, in engine
+    return self.get_engine(self.get_app())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 833, in get_engine
+    return connector.get_engine()
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 499, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\__init__.py", line 362, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\strategies.py", line 74, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\connectors\mysqldb.py", line 64, in dbapi
+    return __import__('MySQLdb')
+ImportError: No module named 'MySQLdb'
+
+No module named 'MySQLdb'
+2017-04-23 15:49:47,193 WARNING 10024 F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py 57 - func: report_default, cost:0.023516 s, error:Traceback (most recent call last):
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 876, in __call__
+    return self.registry[key]
+KeyError: 3724
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\utils.py", line 46, in record_exception
+    back = func(*args, **kwargs)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\views\index.py", line 38, in report_default
+    return jsonify(resCode=200, data=UserApp.user_operation_report(beg, end, time_span, opr_type), mess='ok')
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 98, in user_operation_report
+    ret_list = cls.user_operation_query(beg_int_t * 1000, end_int_t * 1000)
+  File "F:\Web\Projections\BaiduYun\Search\rawFlask\apps\UserApp.py", line 73, in user_operation_query
+    for item in db.session.query(UserOperation).filter(UserOperation.opr_time.between(beg_time, end_time)).all():
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\orm\scoping.py", line 150, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\util\_collections.py", line 878, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 704, in create_session
+    return SignallingSession(self, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 157, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 816, in engine
+    return self.get_engine(self.get_app())
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 833, in get_engine
+    return connector.get_engine()
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\flask_sqlalchemy\__init__.py", line 499, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\__init__.py", line 362, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\engine\strategies.py", line 74, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "F:\Web\Projections\flask_env_B\lib\site-packages\sqlalchemy\connectors\mysqldb.py", line 64, in dbapi
+    return __import__('MySQLdb')
+ImportError: No module named 'MySQLdb'
+
+No module named 'MySQLdb'

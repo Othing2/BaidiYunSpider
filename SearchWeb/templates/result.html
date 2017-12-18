@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>云盘搜索</title>
+</head>
+<body>
+    <h1> 查询"{{ Query }}"的结果： <br> </h1>
+    <hr />
+    <!-- 定义flask宏-->
+    {% macro display_f(entry) %}
+        <li>文件名:{{ entry['title'] }},  大小:{{ entry['size']/1000000 }}M,  链接：<a href="{{ entry['url'] }}">{{ entry['url'] }}</a></li>
+    {% endmacro %}
+
+    {% if ResultSet %}
+    <ul>
+        {% for rs in ResultSet %}
+            <li>{{ display_f(rs) }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>

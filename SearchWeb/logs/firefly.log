@@ -1,0 +1,55 @@
+2017-01-23 14:15:04,733 WARNING 45245 /wls/applications/rawFlask/rawFlask/views/account.py 145 - user login fail internal error ~> Traceback (most recent call last):
+  File "/wls/applications/rawFlask/rawFlask/views/account.py", line 78, in login_sso
+    "appid": appid
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/api.py", line 99, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/api.py", line 49, in request
+    response = session.request(method=method, url=url, **kwargs)
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/sessions.py", line 447, in request
+    prep = self.prepare_request(req)
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/sessions.py", line 378, in prepare_request
+    hooks=merge_hooks(request.hooks, self.hooks),
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/models.py", line 304, in prepare
+    self.prepare_url(url, params)
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/models.py", line 358, in prepare_url
+    "Perhaps you meant http://{0}?".format(url))
+MissingSchema: Invalid URL u'None/account/api_login.json': No schema supplied. Perhaps you meant http://None/account/api_login.json?
+
+Invalid URL u'None/account/api_login.json': No schema supplied. Perhaps you meant http://None/account/api_login.json?
+2017-01-23 14:16:54,328 WARNING 45245 /wls/applications/rawFlask/rawFlask/views/account.py 145 - user login fail internal error ~> Traceback (most recent call last):
+  File "/wls/applications/rawFlask/rawFlask/views/account.py", line 78, in login_sso
+    "appid": appid
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/api.py", line 99, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/api.py", line 49, in request
+    response = session.request(method=method, url=url, **kwargs)
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/sessions.py", line 447, in request
+    prep = self.prepare_request(req)
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/sessions.py", line 378, in prepare_request
+    hooks=merge_hooks(request.hooks, self.hooks),
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/models.py", line 304, in prepare
+    self.prepare_url(url, params)
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/models.py", line 358, in prepare_url
+    "Perhaps you meant http://{0}?".format(url))
+MissingSchema: Invalid URL u'None/account/api_login.json': No schema supplied. Perhaps you meant http://None/account/api_login.json?
+
+Invalid URL u'None/account/api_login.json': No schema supplied. Perhaps you meant http://None/account/api_login.json?
+2017-01-23 14:20:43,989 WARNING 45245 /wls/applications/rawFlask/rawFlask/views/account.py 145 - user login fail internal error ~> Traceback (most recent call last):
+  File "/wls/applications/rawFlask/rawFlask/views/account.py", line 78, in login_sso
+    "appid": appid
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/api.py", line 99, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/api.py", line 49, in request
+    response = session.request(method=method, url=url, **kwargs)
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/sessions.py", line 447, in request
+    prep = self.prepare_request(req)
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/sessions.py", line 378, in prepare_request
+    hooks=merge_hooks(request.hooks, self.hooks),
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/models.py", line 304, in prepare
+    self.prepare_url(url, params)
+  File "/Users/hanyong336/.pyenv/versions/rawflask/lib/python2.7/site-packages/requests/models.py", line 358, in prepare_url
+    "Perhaps you meant http://{0}?".format(url))
+MissingSchema: Invalid URL u'None/account/api_login.json': No schema supplied. Perhaps you meant http://None/account/api_login.json?
+
+Invalid URL u'None/account/api_login.json': No schema supplied. Perhaps you meant http://None/account/api_login.json?
+2017-01-23 14:21:56,723 INFO 45758 /wls/applications/rawFlask/rawFlask/views/account.py 106 - user login success ~> um hanyong336 token: 375a98bba1e14d858f9d48985d5c9830

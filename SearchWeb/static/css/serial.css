@@ -1,0 +1,45 @@
+.gd{
+    margin: 19px 0 5px;
+}
+
+.u1 {
+    width: 55%;
+    float: left;
+    position:relative;
+
+    left:20px;
+    /*border: 1px solid black;*/
+}
+.u1 li {
+    display:inline;
+}
+.u1 li a {
+    text-decoration: none;
+    font-style: italic;
+    background-color: #d08aff;
+}
+
+.u2 {
+    width:40%;
+    float: right;
+    position:relative;
+    right: 20px;
+    /*border: 1px solid black;*/
+}
+.u2 li{
+    display: inline;
+}
+.u2 li a{
+    text-decoration: none;
+}
+
+.frame-search {
+    height: auto;
+    width: auto;
+}
+
+.tb-search {
+    margin: 22px auto 0;
+    width: 641px;
+    text-align: center;
+}

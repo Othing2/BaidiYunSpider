@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>云盘搜索</title>
+
+    <!--
+    <link rel="stylesheet" href="/static/css/serial.css"  type="text/css">
+    -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/serial.css') }}"  type="text/css">
+
+</head>
+<body class="gbody">
+    <div class="gd">
+        <div class="u1" >
+            <ul>
+                <li>热门资源 &nbsp</li>
+                <li><a href="#video">视频</a></li>
+                <li><a href="#file">文件</a></li>
+                <li><a href="#music">音乐</a></li>
+            </ul>
+        </div>
+        <div class="u2" >
+            <ul>
+                <li><a href="{{ url_for('account.login_status_check') }}">登录</a></li>
+                <li><a href="#setup">设置</a> </li>
+            </ul>
+        </div>
+    </div>
+    <div class="frame-search">
+        <form action="#" class="tb-search">
+            <span>
+                <input type="search" style="width:300px;height: 70px">
+            </span>
+            <span>
+                <input type="submit" value="搜索" style="background-color: blue;color: white">
+            </span>
+        </form>
+    </div>
+</body>
+</html>

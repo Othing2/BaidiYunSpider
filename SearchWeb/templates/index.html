@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>云盘搜索</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename="css/base2.css") }}" type="text/css">
+</head>
+<body>
+    <div class="wrapper" id="wrap">
+        <div class="header">
+            <div class="top-nav">
+                <ul>
+                    <li><a onclick="st(this,'40030300','news')" href="http://news.sogou.com" uigs-id="nav_news" id="news">新闻</a></li>
+                    <li class="cur"><span>网页</span></li>
+                    <li><a onclick="st(this,'73141200','weixin')" href="http://weixin.sogou.com/" uigs-id="nav_weixin" id="weixinch">微信</a></li>
+                    <li><a onclick="st(this,'40051200','zhihu')" href="http://zhihu.sogou.com/" uigs-id="nav_zhihu" id="zhihu">知乎</a></li>
+                    <li><a onclick="st(this,'40030500','pic')" href="http://pic.sogou.com" uigs-id="nav_pic" id="pic">图片</a></li>
+                    <li><a onclick="st(this,'40030600','video')" href="http://v.sogou.com/" uigs-id="nav_v" id="video">视频</a></li>
+                    <li><a href="http://mingyi.sogou.com?fr=common_index_nav" uigs-id="nav_mingyi" id="mingyi" onclick="st(this,'','myingyi')">明医</a></li>
+                    <li><a href="http://scholar.sogou.com?fr=common_index_nav" uigs-id="nav_scholar" id="scholar" onclick="st(this,'','scholar')">学术</a></li>
+                    <li class="show-more">
+                        <a href="javascript:void(0);" id="more-product" class="">更多<i class="m-arr"></i></a>
+                        <div class="pos-more" id="products-box" style="display: none; top: 40px; opacity: 0;">
+                            <span class="ico-san"></span>
+                            <a onclick="st(this,'','overseas')" href="http://english.sogou.com?fr=common_index_nav" uigs-id="nav_overseas" id="overseas">英文</a>
+                            <a onclick="st(this,'40031000')" href="http://map.sogou.com" uigs-id="nav_map" id="map">地图</a>
+                            <a onclick="st(this,'web2ww')" href="http://wenwen.sogou.com/" uigs-id="nav_wenwen" id="index_more_wenwen">问问</a>
+                            <a onclick="st(this,'40031500')" href="http://gouwu.sogou.com/" uigs-id="nav_gouwu" id="index_more_gouwu">购物</a>
+                            <a onclick="st(this,'40051203')" href="http://baike.sogou.com/Home.v" uigs-id="nav_baike" id="index_more_baike">百科</a>
+                            <a onclick="st(this)" href="http://zhishi.sogou.com" uigs-id="nav_zhishi" id="index_more_zhishi">知识</a>
+                            <a onclick="st(this,'40050200')" href="http://mp3.sogou.com/" uigs-id="nav_music" id="index_more_music">音乐</a>
+                            <a onclick="st(this,'40051205')" href="http://as.sogou.com/" uigs-id="nav_app" id="index_more_appli">应用</a>
+                            <a onclick="st(this,'40051205','fanyi')" href="http://fanyi.sogou.com?fr=common_index_nav_pc" uigs-id="nav_fanyi" id="index_more_fanyi">翻译</a>
+                            <a href="http://index.sogou.com" uigs-id="nav_index" id="index_more_index">指数</a>
+                            <span class="all"><a onclick="st(this,'40051206')" href="http://www.sogou.com/docs/more.htm?v=1" uigs-id="nav_all" target="_blank">全部</a></span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="user-box">
+                <div class="local-weather" id="local-weather">
+                    <div class="wea-box" id="cur-weather" style="display: block;">
+                        <span class="c6">上海</span><i>
+                        <img src="" width="16" height="16" title="多云" alt="多云">
+                        </i>
+                        <span class="c6">20°</span><span class="pj-w level2">良 64</span>
+                    </div>
+                </div>
+                <span class="line" id="user-box-line" style=""></span>
+                <div class="user-enter">
+                    <a href="javascript:void(0);" id="show-card" style="" uigs-id="settings_show-card">显示卡片</a>
+                    <a href="javascript:void(0);" uigs-id="settings_change-skin" id="changeSkinBtn">换肤</a>
+                    <span class="s-dw">
+                        <a href="javascript:void(0);" id="settings">设置</a>
+                        <div class="pos-more" id="settings-box" style="display: none; top: 40px; opacity: 0;">
+                            <span class="ico-san"></span>
+                            <a href="javascript:void(0);" id="search-settings" uigs-id="settings_config">搜索设置</a>
+                            <a href="javascript:void(0);" id="advanced-search" uigs-id="settings_advanced">高级搜索</a>
+                            <a href="http://help.sogou.com/?w=01091500&amp;v=1" uigs-id="settings_help">帮助</a>
+                        </div>
+                    </span><a href="javascript:void(0);" class="enter" id="loginBtn">登录</a>            </div>
+            </div>
+        </div>
+        <div class="content" id="content">
+            <div class="pos-header" id="top-float-bar">
+                <div class="part-one"></div>
+                <div class="part-two" id="card-tab-layer">
+                    <div class="c-top" id="top-card-tab"></div>
+                </div>
+            </div>
+            <div class="logo2" id="logo-s"><span></span></div>
+            <div class="logo" id="logo-l"><span></span></div>
+            <div class="search-box" id="search-box">
+                <form method="post" action="/qr/result.json" name="sf" id="sf" onsubmit="if(this.query.value=='')return false;document.sf._ast.value=Math.round(new Date().getTime()/1000);">
+                    <span class="sec-input-box yuyin-cur">
+                        <input type="text" placeholder="输入关键字" class="sec-input" name="query" id="query" maxlength="100" autocomplete="off" >
+                    </span>
+                    <span class="enter-input">
+                        <input type="submit" value="so" id="stb" style="background:#477979;font-style: italic;border-bottom-right-radius: 20px;border-top-right-radius: 20px">
+                    </span>
+                    <!--
+                    <input type="hidden" name="_asf" value="www.sogou.com">
+                    <input type="hidden" name="_ast">
+                    <input type="hidden" name="w" value="01019900">
+                    <input type="hidden" name="p" value="40040100">
+                    <input type="hidden" name="ie" value="utf8">
+                    <input type="hidden" name="from" value="index-nologin">  -->
+                </form>
+            <a href="javascript:void(0);" uigs-id="voice_btn" id="voice-btn" class="fayin" title="语音搜索"></a></div>
+        </div>
+    </div>
+    <script>
+        var SugPara, uigs_para,
+            msBrowserName = navigator.userAgent.toLowerCase(),
+            msIsSe = false,
+            msIsMSearch = false,
+            queryinput = document.getElementById('query');
+
+        uigs_para={
+            "uigs_productid": "webapp",
+            "type": "webindex_new",
+            "stype": "nologin",
+            "scrnwi": screen.width,
+            "scrnhi": screen.height,
+            "uigs_pbtag": "A",
+            "uigs_cookie": "SUID,sct",
+            "puid": "invaliduser",
+            "cards": "",
+            "cards_sw": "$cardEnabled",
+            "skin": "$skinId",
+            "skin_sw": "$skinEnable",
+            "protocol": location.protocol.toLowerCase() == "https:" ? "https" : "http"
+        };
+
+        SugPara = {"enableSug":true,"sugType":"web","domain":"w.sugg.sogou.com","productId":"web","sugFormName":"sf","inputid":"query","submitId":"stb","suggestRid":"01015002","normalRid":"01019900","useParent":0 ,"sugglocation":"index","showVr":true,"showHotwords":true};
+
+
+        function mk_con() {
+            try {
+                window.external.metasearch('make_connection', 'www.google.com.hk');
+            } catch (e) {}
+        }
+
+        if (/se 2\.x/i.test(msBrowserName)) {
+            msIsSe = true;
+        }
+
+        if (/metasr/i.test(msBrowserName)) {
+            msIsMSearch = true;
+        }
+
+        if (queryinput) {
+            if (msIsSe && msIsMSearch) {
+                if (queryinput.addEventListener) {
+                    queryinput.addEventListener('keypress', mk_con, false);
+                    queryinput.addEventListener('keydown', mk_con, false)
+                } else if (queryinput.attachEvent) {
+                    queryinput.attachEvent('onkeypress', mk_con);
+                    queryinput.attachEvent('onkeydown', mk_con);
+                } else {
+                    queryinput.onkeypress = mk_con;
+                    queryinput.onkeydown = mk_con;
+                }
+            }
+        }
+
+        window.m_s_index = function() {
+            var w = document.sf.query,
+                c = Math.round((new Date().getTime() + Math.random()) * 1000);
+
+            w.focus();
+
+            if(new RegExp("kw=([^&]+)").test(location.search)) {
+                if(w.value.length == 0) {
+                    w.value = decodeURIComponent(RegExp.$1);
+                }
+            }
+
+            if (document.cookie.indexOf("SUV=") < 0) {
+                document.cookie = "SUV=" + c + ";path=/;expires=Sun, 29 July 2026 00:00:00 UTC;domain=sogou.com"
+            }
+        };
+
+        function st(self, p, product, anchor) {
+            var searchBox = document.sf.query,
+                query = encodeURIComponent(searchBox.value),
+
+                productUrl = {
+                    "news": 'http://news.sogou.com/news?ie=utf8&query=',
+                    "web": 'web?ie=utf8&query=',
+                    "weixin": 'http://weixin.sogou.com/weixin?type=2&ie=utf8&query=',
+                    "zhihu": 'http://zhihu.sogou.com/zhihu?ie=utf8&query=',
+                    "pic": 'http://pic.sogou.com/pics?ie=utf8&query=',
+                    "video": 'http://v.sogou.com/v?ie=utf8&query=',
+                    "myingyi": 'http://mingyi.sogou.com/mingyi?ie=utf8&fr=common_index_nav&query=',
+                    "overseas": 'http://english.sogou.com?b_o_e=1&ie=utf8&fr=common_index_nav&query=',
+                    "scholar": 'http://scholar.sogou.com?ie=utf8&fr=common_index_nav&query=',
+                    "fanyi": 'http://fanyi.sogou.com/?fr=common_index_nav_pc&ie=utf8&keyword='
+                },
+                newHref = productUrl[product] || self.href;
+
+            function getConnectSymbol(url) {
+                return url.indexOf("?") > -1 ? '&' : '?';
+            }
+
+            if(searchBox && searchBox.value !== ''){
+
+                if(productUrl[product]) {
+                    newHref = productUrl[product] + query;
+                } else if(newHref.indexOf("kw=") > 0) {
+                    newHref = newHref.replace(new RegExp("kw=[^&$]*"), "kw=" + query)
+                } else {
+                    newHref += getConnectSymbol(newHref) + 'kw=' + query;
+                }
+            }
+
+            if(p){
+                newHref += getConnectSymbol(newHref) + "p=" + p;
+            }
+
+            if (anchor && anchor.length > 0){
+                newHref += "#" + anchor;
+            }
+
+            self.href = newHref;
+        }
+
+        window.cid = function(o, p) {
+            var w = document.sf.query,
+                q = encodeURIComponent(w.value);
+
+            if (!q) {
+                o.href += "?cid=" + p
+            } else {
+                if (p === "web2ww") {
+                    o.href += "s/?cid=web2ww&w=" + q
+                } else if (p === "web2bk") {
+                    o.href += "SearchWeb.e?sp=S" + q + "&cid=web2bk"
+                }
+            }
+        };
+
+        window.m_s_index();
+    </script>
+</body>
+</html>
