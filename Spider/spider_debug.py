@@ -249,6 +249,7 @@ class BaiduYunSpider:
         pool.close()
         pool.join()
 
+
 if __name__ == '__main__':
     uids = ['697008088', '3660825403', '775105216', '154098367', '491745132']
 
@@ -264,7 +265,6 @@ if __name__ == '__main__':
     unseen_uids = unseen_uids if len(unseen_uids) else []
     seen_uids = seen_uids if len(seen_uids) else []
 
-
     spider = BaiduYunSpider(100000,uids[4],unseen_uids,seen_uids)
 
     # s = spider.START(0,0,0)
@@ -274,10 +274,6 @@ if __name__ == '__main__':
     # [print(uf) for uf in info.followers if uf]
 
     print('Starting Time:------------------%s----------------' % time.ctime())
-    #Starting Time:------------------Thu Mar 30 00:28:25 2017----------------
-    #Ending Time:-------------------Fri Apr  7 05:58:12 2017-----------------
-    #Starting Time:------------------Sat Apr  8 00:36:49 2017----------------
-    # Ending Time:-------------------Mon Apr 17 19:50:08 2017-----------------
 
     spider.run()
 
