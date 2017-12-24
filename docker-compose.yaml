@@ -1,0 +1,21 @@
+version:'2'
+
+services:
+  spider: 
+    build: Spider/
+    container_name: "spider_obj"
+    depends_on:
+      - mongo
+
+  web:
+    build: Web/
+    container_name: "web_obj"
+    depends_on:
+      - mongo
+      - redis
+
+  mongo:
+    image:mongo
+
+  redis:
+    image:redis
