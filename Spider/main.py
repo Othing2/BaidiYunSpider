@@ -26,22 +26,22 @@ class LoadingError(Exception):
 
 
 class Spider(object):
-    def __init__(self, new_uid_list, old_uid_dict=dict()):
+    def __init__(self, new_uid_list, max_uids, old_uid_dict=dict()):
         self.share_every_page = 60
         self.fans_every_page = 24
         self.follower_every_page = 24
 
-        self.Max_Pubshare = 120
-        self.Max_Follower = 120
-        self.Max_Fans = 24
+        self.Max_Pubshare = 60*3
+        self.Max_Follower = 24*3
+        self.Max_Fans = 24*3
 
-        self.Max_Uids = 1000
+        self.Max_Uids = max_uids
         self.cur = 0
 
-        self.Max_Info_Jobs = 2
+        self.Max_Info_Jobs = 3
         self.Max_Share_Jobs = 6
-        self.Max_Follow_Jobs = 2
-        self.Max_Fans_JObs = 2
+        self.Max_Follow_Jobs = 3
+        self.Max_Fans_JObs = 3
 
         self.new_uid_q = Queue()
         for uid in new_uid_list:
@@ -95,7 +95,6 @@ class Spider(object):
             for i in range(pubshare_count // self.share_every_page + 1):
                 url = URLs.share_url.format(i * self.share_every_page, self.share_every_page, uid)
                 share_info = json.loads(requests.get(url, headers=Spider._header(uid), timeout=30).text)
-                # 信息加载失败(请求发送太快)，需要重新把uid放入待爬取队列中
                 if share_info['errno'] is not 0:
                     print('    [ERROR]:获取用户%s的分享失败' % uid)
                     break
@@ -110,11 +109,13 @@ class Spider(object):
                         file_list.append({'title': f.get('server_filename'), 'url': path,
                                          'size': f.get('size'), 'dir': f.get('isdir')})
             # 存mongo
+                gevent.sleep(3)
 
     def get_usr_fans(self):
         """
         note: 根据观察，当粉丝数大于2400时，最多只能获得2400个粉丝信息,这里只需要获取少了粉丝信息,因为这个响应会很慢
         """
+        print("======Start Getting Fans")
         while self.cur <= self.Max_Uids or len(self.new_fans_dict):
 
             while not len(self.new_fans_dict):
@@ -124,12 +125,13 @@ class Spider(object):
                     return
 
             uid, fans_count = self.new_fans_dict.popitem()
+            print(">>>>>>>Getting Uid '%s'Fans" % uid)
             if fans_count == 0:
                 continue
             if int(fans_count) > self.Max_Fans:
                 fans_count = self.Max_Fans
-            fans_list = list()
 
+            fans_list = list()
             for i in range(fans_count // self.fans_every_page + 1):
                 url = URLs.fans_url.format(i * self.fans_every_page, self.fans_every_page, uid)
                 fans_info = json.loads(requests.get(url, headers=Spider._header(uid), timeout=30).text)
@@ -142,11 +144,14 @@ class Spider(object):
                     fans_list.append({'uid': str(f['fans_uk']), 'total_follow': f['follow_count'],
                                      'total_fans': f['fans_count'], 'total_share': f['pubshare_count']})
                 # 存表
+                gevent.sleep(3)
+            print("Fans List By UID '%s':\n    " % uid, fans_list)
 
     def get_usr_follower(self):
         """
 
         """
+        print("======Start Getting Follows")
         while self.cur <= self.Max_Uids or len(self.new_follow_dict):
 
             while not len(self.new_follow_dict):
@@ -156,17 +161,18 @@ class Spider(object):
                     return
 
             uid, follower_count = self.new_follow_dict.popitem()
+            print(">>>>>>>Getting Uid '%s'Follower" % uid)
             if follower_count == 0:
                 continue
             if follower_count > self.Max_Follower:
                 follower_count = self.Max_Follower
-            follow_list = list()
 
+            follow_list = list()
             for i in range(int(follower_count) // self.follower_every_page + 1):
                 url = URLs.follow_url.format(i * self.follower_every_page, self.follower_every_page, uid)
                 follow_info = json.loads(requests.get(url, headers=Spider._header(uid), timeout=30).text)
                 if int(follow_info['errno']) is not 0:
-                    print('    [ERROR]:获取用户 %s 的订阅信息失败'%uid)
+                    print('    [ERROR]:获取用户 %s 的订阅信息失败' % uid)
                     break
                 _list = follow_info.get('follow_list', [])
                 for f in _list:
@@ -174,6 +180,8 @@ class Spider(object):
                     follow_list.append({'uid': str(f['follow_uk']), 'total_follow': f['follow_count'],
                                        'total_fans': f['fans_count'], 'total_share': f['pubshare_count']})
                 # 存表
+                gevent.sleep(3)
+            print("Follower List By UID '%s':\n    " % uid, follow_list)
 
     def get_usr_info(self):
         """
@@ -191,6 +199,7 @@ class Spider(object):
                 print("No More New Uid! Get_Usr_Info End")
                 return
             url = URLs.info_url.format(uid)
+            print(">>>>>>>Getting Uid '%s' Info" % uid)
             try:
                 infos = json.loads(requests.get(url, headers=Spider._header(uid), timeout=30).text)
                 total_shares = infos['user_info']['pubshare_count']  # 获得分享文件数
@@ -198,13 +207,10 @@ class Spider(object):
                 total_fans = infos['user_info']['fans_count']  # 获得粉丝人数
                 _weight = int(math.sqrt(int(total_fans+total_shares)))  # 计算该用户资源权重
 
-                # usr_shares = self.get_usr_shares(uid, total_shares)
-                # usr_fans = self.get_usr_fans(uid, total_fans)
-                # usr_follows = self.get_usr_follower(uid, total_followers)
                 self.new_shares_dict[uid] = total_shares
                 self.new_follow_dict[uid] = total_followers
                 self.new_fans_dict[uid] = total_fans
-                self.old_uid_dict[uid] = _weight
+                self.old_uid_dict[uid] = {"weight": _weight}
                 self.new_uid_dict[uid] = (total_fans, total_followers, total_shares, _weight)
 
                 self.cur += 1
@@ -213,58 +219,68 @@ class Spider(object):
             except Exception as e:
                 print('>>>>>>>ERROR In Doing %s : \n' % __name__, e)
 
+            print("User Info By UID '%s':\n    " % uid, self.new_uid_dict[uid])
         self.running = False
         # new_uid_dict 需要存表
 
-    def run(self, seed_uid):
-        newq = collections.deque()
-        oldq = collections.deque()
-        newq.append(seed_uid)
-        total_uids = 0
-        try:
-            while total_uids <= self.Max_Uids and len(newq) != 0:
-                uid = newq.popleft()
-                if uid in oldq:
-                    continue
-                print('Getting the information from user \'%s\', Total unseen uids is %d and total seen uids is %d '%(uid,len(newq),len(oldq)))
-
-                usr_info = USR_INFO(*self.get_usr_info(uid))
-
-                if usr_info.fans or usr_info.follows or usr_info.shares:
-                    oldq.append(uid)
-                    [newq.append(f['uid']) for f in usr_info.fans if f['total_share']]     # or f['total_follow']>20
-                    [newq.append(f['uid']) for f in usr_info.follows if f['total_share']]  # or f['total_fans']>20
-                    if usr_info.shares:
-                        total_uids += 1
-                        table_shares.insert({'uid': uid, 'sharelist': usr_info.shares})
-                    if usr_info.fans:
-                        table_fans.insert({'uid': uid, 'fanslist': usr_info.fans})
-                    if usr_info.follows:
-                        table_follows.insert({'uid': uid, 'followlist': usr_info.follows})
-                time.sleep(30)
-        except Exception as e:
-            print('    [ERROR]:',e)
-        finally:
-            table_seen_uid.insert({'uids':oldq})
-            table_unseen_uid.insert({'uids':newq})
+    # def run(self, seed_uid):
+    #     newq = collections.deque()
+    #     oldq = collections.deque()
+    #     newq.append(seed_uid)
+    #     total_uids = 0
+    #     try:
+    #         while total_uids <= self.Max_Uids and len(newq) != 0:
+    #             uid = newq.popleft()
+    #             if uid in oldq:
+    #                 continue
+    #             print('Getting the information from user \'%s\', Total unseen uids is %d and total seen uids is %d '%(uid,len(newq),len(oldq)))
+    #
+    #             usr_info = USR_INFO(*self.get_usr_info(uid))
+    #
+    #             if usr_info.fans or usr_info.follows or usr_info.shares:
+    #                 oldq.append(uid)
+    #                 [newq.append(f['uid']) for f in usr_info.fans if f['total_share']]     # or f['total_follow']>20
+    #                 [newq.append(f['uid']) for f in usr_info.follows if f['total_share']]  # or f['total_fans']>20
+    #                 if usr_info.shares:
+    #                     total_uids += 1
+    #                     table_shares.insert({'uid': uid, 'sharelist': usr_info.shares})
+    #                 if usr_info.fans:
+    #                     table_fans.insert({'uid': uid, 'fanslist': usr_info.fans})
+    #                 if usr_info.follows:
+    #                     table_follows.insert({'uid': uid, 'followlist': usr_info.follows})
+    #             time.sleep(30)
+    #     except Exception as e:
+    #         print('    [ERROR]:',e)
+    #     finally:
+    #         table_seen_uid.insert({'uids':oldq})
+    #         table_unseen_uid.insert({'uids':newq})
 
     def multi(self):
         g_jobs = list()
 
         for _ in range(self.Max_Fans_JObs):
-            j = gevent.spawn(self.get_usr_fans, uid, fans_count)
+            j = gevent.spawn(self.get_usr_fans)
             g_jobs.append(j)
 
         for _ in range(self.Max_Follow_Jobs):
-            j = gevent.spawn(self.get_usr_follower, uid, follower_count)
+            j = gevent.spawn(self.get_usr_follower)
             g_jobs.append(j)
 
         for _ in range(self.Max_Info_Jobs):
-            j = gevent.spawn(self.get_usr_info, uid)
+            j = gevent.spawn(self.get_usr_info)
             g_jobs.append(j)
 
-        for _ in range(self.Max_Share_Jobs):
-            j = gevent.spawn(self.get_usr_shares, uid, share_count)
-            g_jobs.append(j)
+        # for _ in range(self.Max_Share_Jobs):
+        #     j = gevent.spawn(self.get_usr_shares)
+        #     g_jobs.append(j)
 
         gevent.joinall(g_jobs)
+
+
+if __name__ == '__main__':
+    uids = ['697008088', '3660825403', '775105216', '154098367', '491745132']
+    max_uids = 10
+
+    _s = Spider(uids, max_uids)
+    _s.multi()
+

@@ -16,10 +16,10 @@ TOTAL = namedtuple('TOTAL', ['total_share', 'total_fans', 'total_follower'])
 Loading_Fail_Cnt = 5   # 防止ip被封禁，如果连续出现5次的信息加载失败，则断开链接
 SLEEP_TIME = 30
 
-db_conn = MongoClient()
-db_base = db_conn.bdpan           #数据库
-table_shares = db_base.shares     #分享数据表单
-table_follows = db_base.follows   #订阅表单
-table_fans = db_base.fans         #粉丝表单
-table_seen_uid = db_base.seen_uids
-table_unseen_uid = db_base.unseen_uids
+# db_conn = MongoClient()
+# db_base = db_conn.bdpan           #数据库
+# table_shares = db_base.shares     #分享数据表单
+# table_follows = db_base.follows   #订阅表单
+# table_fans = db_base.fans         #粉丝表单
+# table_seen_uid = db_base.seen_uids
+# table_unseen_uid = db_base.unseen_uids
